@@ -3,7 +3,9 @@ import time
 
 
 def make_request():
-    requests.get("https://quicknotes.space/")
+    response = requests.get("https://quicknotes.space/")
+
+    print("Response status code: ", response.status_code)
 
 
 SLEEP_TIME = 600
