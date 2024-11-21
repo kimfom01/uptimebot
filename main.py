@@ -16,6 +16,9 @@ def make_request(url: str):
 SLEEP_TIME = 180
 URL = "https://emailpostapi.onrender.com/health"
 
-while True:
-    make_request(url=URL)
-    time.sleep(SLEEP_TIME)
+try:
+    while True:
+        make_request(url=URL)
+        time.sleep(SLEEP_TIME)
+except Exception as ex:
+    print(str(ex))
