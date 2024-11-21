@@ -1,4 +1,7 @@
 env/
+.env
+.venv
+venv/
 README.md
 .git/
 .gitignore/

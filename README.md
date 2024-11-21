@@ -8,9 +8,15 @@ The Uptime Bot is designed to monitor server availability by periodically sendin
 
 ## Usage
 
-1. Update the `URL` and `SLEEP_TIME` variables
+1. Create a `.env` file and add the following variables
+
+   ```.env
+   SLEEP_TIME=180    # 3 minutes or whatever interval you want
+   URL=https://example.com/health   # or whatever endpoint you want to check
+   ```
+
 2. On your terminal run `docker compose up`
-   1. You can add the `-d` flag to run the bot on detached mode
-   2. You can add the `--build` flag to rebuild the image before bringing it up
+   - You can add the `-d` flag to run the bot on detached mode
+   - You can add the `--build` flag to rebuild the image before bringing it up
 
 To see the logs, run `docker logs <specify the name of the container>`

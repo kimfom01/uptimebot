@@ -4,3 +4,4 @@ services:
     restart: always
     build:
       dockerfile: Dockerfile
+    env_file: .env

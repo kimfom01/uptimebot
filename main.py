@@ -1,5 +1,12 @@
+import os
 import requests
 import time
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
+config = {"URL": os.getenv("URL"), "SLEEP_TIME": int(os.getenv("SLEEP_TIME"))}
 
 
 def make_request(url: str):
@@ -13,12 +20,9 @@ def make_request(url: str):
     )
 
 
-SLEEP_TIME = 180
-URL = "https://emailpostapi.onrender.com/health"
-
 try:
     while True:
-        make_request(url=URL)
-        time.sleep(SLEEP_TIME)
+        make_request(url=config["URL"])
+        time.sleep(int(config["SLEEP_TIME"]))
 except Exception as ex:
     print(str(ex))
