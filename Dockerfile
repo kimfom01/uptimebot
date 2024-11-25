@@ -36,4 +36,4 @@ COPY . .
 
 USER appuser
 
-CMD [ "poetry", "run", "python", "main.py" ]
+CMD [ "poetry", "run", "python", "src/main.py" ]
