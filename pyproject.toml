@@ -12,6 +12,7 @@ idna = "3.10"
 python-dotenv = "1.0.1"
 requests = "2.32.3"
 urllib3 = "2.2.3"
+fastapi = {extras = ["standard"], version = "^0.115.5"}
 
 [tool.poetry.dev-dependencies]
 
