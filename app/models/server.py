@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import List, Union
+from typing import Union
 import uuid
 from pydantic import BaseModel
 
@@ -17,6 +17,3 @@ class ServerCreate(BaseModel):
     url: str
     title: str
     interval: int
-
-
-db: List[Server] = []

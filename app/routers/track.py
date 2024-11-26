@@ -1,21 +1,15 @@
 from datetime import datetime
 import uuid
-from fastapi import HTTPException, status
-from app import create_app
-from app.tasks import hello
-from app.models.server import ServerCreate, Server, db
+from fastapi import APIRouter, HTTPException, status
 
-app = create_app()
+from app.data import db
+from app.models.server import Server, ServerCreate
 
 
-@app.get("/")
-async def get_base():
-    result = hello.delay(4, 4)
-    print(result)
-    return "Welcome to UptimeBot API"
+router = APIRouter(prefix="/tracks", tags=["tracks"])
 
 
-@app.post("/track", status_code=status.HTTP_201_CREATED)
+@router.post("/", status_code=status.HTTP_201_CREATED)
 async def post_track(server_create: ServerCreate) -> Server:
     server = Server(
         url=server_create.url,
@@ -30,7 +24,7 @@ async def post_track(server_create: ServerCreate) -> Server:
     return server
 
 
-@app.get("/track/{tracking_id}", status_code=status.HTTP_200_OK)
+@router.get("/{tracking_id}", status_code=status.HTTP_200_OK)
 async def get_track(tracking_id: uuid.UUID) -> Server:
     result = list(filter(lambda x: x.tracking_id == tracking_id, db))
 
