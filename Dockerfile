@@ -2,16 +2,6 @@ FROM python:3.13-slim
 
 WORKDIR /bot
 
-ARG UID=10001
-RUN adduser \
-    --disabled-password \
-    --gecos "" \
-    --home "/nonexistent" \
-    --shell "/sbin/nologin" \
-    --no-create-home \
-    --uid "${UID}" \
-    appuser
-
 ENV PYTHONUNBUFFERED=1
 
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -33,7 +23,5 @@ COPY poetry.lock .
 RUN poetry install
 
 COPY . .
-
-USER appuser
 
 CMD [ "poetry", "run", "python", "src/main.py" ]
